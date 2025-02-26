@@ -1,0 +1,49 @@
+CREATE DATABASE matek CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
+
+ALTER TABLE haromszog ADD PRIMARY KEY (hszID);
+
+ALTER TABLE haromszog ADD k int;
+ALTER TABLE haromszog ADD t double;
+
+-- 1.
+UPDATE haromszog SET k = a_oldal + b_oldal + c_oldal;
+
+UPDATE haromszog 
+SET t = ROUND(sqrt(k/2 * (k/2 - a_oldal) * (k/2 - b_oldal) * (k/2 - c_oldal)) , 2);
+
+-- 2.
+
+SELECT a_oldal, b_oldal, c_oldal
+FROM haromszog
+WHERE POW(a_oldal , 2) + POW(b_oldal , 2) = POW(c_oldal , 2);
+
+-- 3.
+SELECT a_oldal, b_oldal, c_oldal
+FROM haromszog
+WHERE a_oldal = b_oldal OR b_oldal = c_oldal OR a_oldal = c_oldal;
+
+-- 4-5.
+ALTER TABLE haromszog ADD gamma double;
+
+UPDATE haromszog 
+SET gamma = TRUNCATE(DEGREES(ACOS((POW(c_oldal , 2) - POW(a_oldal , 2) - POW(b_oldal , 2)) / (-2 * a_oldal *b_oldal))) , 1);
+
+-- 6.
+ALTER TABLE haromszog ADD alpha double;
+ALTER TABLE haromszog ADD beta double;
+
+UPDATE haromszog 
+SET alpha = TRUNCATE(DEGREES(ASIN(a_oldal / c_oldal * SIN(RADIANS(gamma)))), 1);
+
+UPDATE haromszog SET beta = TRUNCATE(180 - alfa - gamma, 1)
+
+-- 7.
+SELECT a_oldal, b_oldal, c_oldal
+FROM haromszog
+order BY RAND() * 40 + 1 LIMIT 1;
+
+-- 8.
+SELECT FLOOR(RAND() * 40 + 1) AS tetelszam
+FROM haromszog
+order BY RAND() LIMIT 1;
+

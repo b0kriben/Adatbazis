@@ -1,0 +1,60 @@
+CREATE DATABASE munkaidonyilvantartas CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
+
+ALTER TABLE dolgozo ADD PRIMARY KEY (dolgozoID);
+
+ALTER TABLE napimunkaido ADD PRIMARY KEY (dolgozoID, munkanap);
+
+ALTER TABLE napimunkaido ADD FOREIGN KEY (dolgozoID) REFERENCES dolgozo(dolgozoID);
+
+ALTER TABLE dolgozo ADD belepes datetime;
+
+
+-- 1.f
+SELECT dolgozonev , szuldatum, TIMESTAMPDIFF(year, szuldatum, "2020-11-01") AS eletkor, 2020 - YEAR(szuldatum) AS eletkor2020ban
+FROM dolgozo;
+
+-- 2.f
+SELECT dolgozonev, DATE(belepes) AS datum, TIME(belepes) AS ido
+FROM dolgozo
+ORDER BY belepes;
+
+-- 3.f
+SELECT dolgozonev, MONTH(szuldatum) AS honap, MONTHNAME(szuldatum) AS honapnev
+FROM dolgozo
+ORDER BY honap;
+
+-- 4.f
+SELECT dolgozonev, szuldatum, DAYNAME(szuldatum) AS szulNAP
+FROM dolgozo
+WHERE DAYNAME(szuldatum) = "Saturday" OR DAYNAME(szuldatum) = "Sunday";
+
+-- 5.f
+SELECT dolgozonev, TIMESTAMPDIFF(year, belepes, CURRENT_DATE) AS hanyEveDolgozik
+FROM dolgozo
+WHERE TIMESTAMPDIFF(year, belepes, CURRENT_DATE) >= 20;
+
+-- 6.f
+SELECT dolgozonev, DATE(belepes), 
+DATEDIFF(LAST_DAY(belepes), DATE(belepes)) AS napokSzamaAHonapban
+FROM dolgozo;
+
+-- 7.f
+SELECT dolgozo.dolgozonev, napimunkaido.munkanap, TIMEDIFF(napimunkaido.munkabefejezes, napimunkaido.munkakezdes) AS napiMunkaido
+FROM dolgozo INNER JOIN napimunkaido ON dolgozo.dolgozoID = napimunkaido.dolgozoID;
+
+-- 8.f
+-- nem működik az alábbi megoldás mert az összegzésnél túllépjük a 24 órát
+SELECT dolgozo.dolgozonev, 
+SUM(TIMEDIFF(napimunkaido.munkabefejezes, napimunkaido.munkakezdes)) AS osszmunkaido
+FROM dolgozo INNER JOIN napimunkaido ON dolgozo.dolgozoID = napimunkaido.dolgozoID
+GROUP BY dolgozo.dolgozoID;
+
+-- jó megoldás
+SELECT dolgozo.dolgozonev, 
+SUM((HOUR(napimunkaido.munkabefejezes) *60 + MINUTE(napimunkaido.munkabefejezes)) -
+(HOUR(napimunkaido.munkakezdes) *60 + MINUTE(napimunkaido.munkakezdes))) / 60 AS osszOra
+FROM dolgozo INNER JOIN napimunkaido ON dolgozo.dolgozoID = napimunkaido.dolgozoID
+GROUP BY dolgozo.dolgozoID
+HAVING osszOra > 14*8.5;
+
+

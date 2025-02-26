@@ -1,0 +1,146 @@
+CREATE DATABASE futas CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
+
+
+-- 1.f
+SELECT CONCAT(elotag, vnev, knev) AS nev
+FROM eredmenylista;
+
+-- 2.f
+SELECT CONCAT(vnev, vnev, knev) AS kettovnev, szulido
+FROM eredmenylista
+ORDER BY szulido;
+
+-- 3.f
+SELECT CONCAT(LOWER(SUBSTRING(vnev, 1, 1)), LOWER(SUBSTRING(knev, 1, 1)), ROUND(RAND()), ROUND(RAND()), ROUND(RAND())) AS rajtszam
+FROM eredmenylista;
+
+-- 4.f
+SELECT CONCAT(vnev, knev) AS nev, AVG(ido1), AVG(ido2), AVG(ido3) AS atlagteljesitmeny
+FROM eredmenylista
+ORDER BY atlagteljesitmeny;
+
+-- 5.f
+
+
+-- 6.f
+
+
+-- 7.f
+
+
+-- 8.f
+
+
+-- 9.f
+
+
+-- 10.f
+
+
+
+
+
+
+
+GPT:
+
+-- 1.f
+SELECT 
+  CASE 
+    WHEN elotag != '' THEN CONCAT(elotag, ' ', vnev, ' ', knev)
+    ELSE CONCAT(vnev, ' ', knev)
+  END AS teljes_név
+FROM eredmenylista;
+
+
+-- 2.f
+SELECT vnev, knev, szulido
+FROM eredmenylista
+WHERE LENGTH(knev) - LENGTH(REPLACE(knev, ' ', '')) = 1
+ORDER BY szulido;
+
+
+
+-- 3.f
+SELECT 
+  CONCAT(LOWER(SUBSTRING(vnev, 1, 1)), LOWER(SUBSTRING(knev, 1, 1)), LPAD(FLOOR(100 + (RAND() * 900)), 3, '0')) AS rajtszam,
+  CASE 
+    WHEN elotag != '' THEN CONCAT(elotag, ' ', vnev, ' ', knev)
+    ELSE CONCAT(vnev, ' ', knev)
+  END AS teljes_név
+FROM eredmenylista;
+
+
+
+-- 4.f
+SELECT 
+  CASE 
+    WHEN elotag != '' THEN CONCAT(elotag, ' ', vnev, ' ', knev)
+    ELSE CONCAT(vnev, ' ', knev)
+  END AS teljes_név,
+  ROUND((TIME_TO_SEC(ido1) + TIME_TO_SEC(ido2) + TIME_TO_SEC(ido3)) / 3 / 60, 1) AS atlagteljesitmeny
+FROM eredmenylista
+ORDER BY atlagteljesitmeny;
+
+
+
+-- 5.f
+SELECT 
+  CASE 
+    WHEN elotag != '' THEN CONCAT(elotag, ' ', vnev, ' ', knev)
+    ELSE CONCAT(vnev, ' ', knev)
+  END AS teljes_név,
+  ido3
+FROM eredmenylista
+ORDER BY TIME_TO_SEC(ido3) DESC
+LIMIT 15;
+
+
+-- 6.f
+SELECT 
+  CASE 
+    WHEN elotag != '' THEN CONCAT(elotag, ' ', vnev, ' ', knev)
+    ELSE CONCAT(vnev, ' ', knev)
+  END AS teljes_név,
+  szulido
+FROM eredmenylista
+WHERE MONTH(szulido) = 6 AND DAY(szulido) BETWEEN 1 AND 15;
+
+
+-- 7.f
+CREATE TABLE kozepkoruak AS
+SELECT 
+  CASE 
+    WHEN elotag != '' THEN CONCAT(elotag, ' ', vnev, ' ', knev)
+    ELSE CONCAT(vnev, ' ', knev)
+  END AS teljes_név,
+  ido1, ido2, ido3, szulido
+FROM eredmenylista
+WHERE TIMESTAMPDIFF(YEAR, szulido, CURDATE()) > 35;
+
+
+-- 8.f
+ALTER TABLE haromszogek ADD COLUMN c DECIMAL(10,2);
+
+UPDATE haromszogek
+SET c = ROUND(SQRT(POW(a, 2) + POW(b, 2) - 2 * a * b * COS(RADIANS(gamma))), 2);
+
+
+-- 9.f
+ALTER TABLE haromszogek ADD COLUMN k DECIMAL(10,2), ADD COLUMN t DECIMAL(10,2);
+
+UPDATE haromszogek
+SET 
+  k = ROUND(a + b + c, 2),
+  t = ROUND((a * b * SIN(RADIANS(gamma))) / 2, 2);
+
+
+
+-- 10.f
+ALTER TABLE haromszogek ADD COLUMN alfa DECIMAL(10,2), ADD COLUMN beta DECIMAL(10,2);
+
+UPDATE haromszogek
+SET 
+  alfa = ROUND(ASIN(SIN(RADIANS(gamma)) * a / c) * 180 / PI(), 2),
+  beta = ROUND(ASIN(SIN(RADIANS(gamma)) * b / c) * 180 / PI(), 2);
+

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="hu"><head>
+<link rel="stylesheet" type="text/css" href="Az%20egyed-kapcsolat%20diagram%20elemei%20%20%20Adatb%C3%A1zisok%20gyakorlat_elemei/base.css">
+<link rel="stylesheet" type="text/css" href="Az%20egyed-kapcsolat%20diagram%20elemei%20%20%20Adatb%C3%A1zisok%20gyakorlat_elemei/content.css">
+<link rel="stylesheet" type="text/css" href="Az%20egyed-kapcsolat%20diagram%20elemei%20%20%20Adatb%C3%A1zisok%20gyakorlat_elemei/nav.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Az egyed-kapcsolat diagram elemei | Adatbázisok gyakorlat </title>
+<link rel="shortcut icon" href="https://www.inf.u-szeged.hu/~gnemeth/adatbgyak/exe/EK_diagram/favicon.ico" type="image/x-icon">
+<meta name="author" content="Németh Gábor">
+<meta name="generator" content="eXeLearning 2.0.4 - exelearning.net">
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="Az%20egyed-kapcsolat%20diagram%20elemei%20%20%20Adatb%C3%A1zisok%20gyakorlat_elemei/exe_jquery.js"></script>
+<script type="text/javascript">$exe_i18n={show:"Show",hide:"Elrejtés",showFeedback:"Mutassa a visszajelzést",hideFeedback:"Visszajelzés elrejtése",correct:"Helyes",incorrect:"Incorrect",menu:"Menu"}</script>
+<script type="text/javascript" src="Az%20egyed-kapcsolat%20diagram%20elemei%20%20%20Adatb%C3%A1zisok%20gyakorlat_elemei/common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="exe-web-site js"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Skip navigation</a></p>
+<header id="header" role="banner">Adatbázisok gyakorlat</header>
+<p id="nav-toggler"><a href="#" onclick="myTheme.toggleMenu(this)" class="hide-nav" id="toggle-nav" title="Elrejtés"><span>Menu</span></a></p><nav id="siteNav" role="navigation">
+<ul>
+   <li class="sfout"><a href="https://www.inf.u-szeged.hu/~gnemeth/adatbgyak/exe/EK_diagram/index.html" class="daddy main-node">Egyed-kapcsolat diagram</a></li>
+   <li id="active" class="sfout"><a href="https://www.inf.u-szeged.hu/~gnemeth/adatbgyak/exe/EK_diagram/az_egyedkapcsolat_diagram_elemei.html" class="active daddy">Az egyed-kapcsolat diagram elemei</a>
+   <ul>
+      <li class="sfout"><a href="https://www.inf.u-szeged.hu/~gnemeth/adatbgyak/exe/EK_diagram/kapcsolatok_tpusai.html" class="no-ch">Kapcsolatok típusai</a></li>
+   </ul>
+   </li>
+   <li class="sfout"><a href="https://www.inf.u-szeged.hu/~gnemeth/adatbgyak/exe/EK_diagram/az_ek_diagram_elksztse_szveges_specifikci_alapjn.html" class="daddy">Az E-K diagram elkészítése szöveges specifikáció alapján</a>
+   <ul class="other-section">
+      <li><a href="https://www.inf.u-szeged.hu/~gnemeth/adatbgyak/exe/EK_diagram/1_plda.html" class="no-ch">1. példa</a></li>
+      <li><a href="https://www.inf.u-szeged.hu/~gnemeth/adatbgyak/exe/EK_diagram/2_plda.html" class="no-ch">2. példa</a></li>
+   </ul>
+   </li>
+   <li class="sfout"><a href="https://www.inf.u-szeged.hu/~gnemeth/adatbgyak/exe/EK_diagram/a_dia_program_hasznlata_ek_diagramok_ksztshez.html" class="no-ch">A Dia program használata E-K diagramok készítéséhez</a></li>
+   <li class="sfout"><a href="https://www.inf.u-szeged.hu/~gnemeth/adatbgyak/exe/EK_diagram/feladatok.html" class="no-ch">Feladatok</a></li>
+   <li class="sfout"><a href="https://www.inf.u-szeged.hu/~gnemeth/adatbgyak/exe/EK_diagram/hzi_feladat.html" class="no-ch">Házi feladat</a></li>
+   <li class="sfout"><a href="https://www.inf.u-szeged.hu/~gnemeth/adatbgyak/exe/EK_diagram/ellenrz_krdsek.html" class="no-ch">Ellenőrző kérdések</a></li>
+</ul>
+</nav>
+<div id="topPagination">
+<nav class="pagination noprt">
+<a href="https://www.inf.u-szeged.hu/~gnemeth/adatbgyak/exe/EK_diagram/index.html" class="prev"><span>« </span>Előző</a> | <a href="https://www.inf.u-szeged.hu/~gnemeth/adatbgyak/exe/EK_diagram/kapcsolatok_tpusai.html" class="next"> Következő<span> »</span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main" role="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">Az egyed-kapcsolat diagram elemei</h1></header>
+<article class="iDevice_wrapper FreeTextIdevice" id="id1">
+<div class="iDevice emphasis0">
+<div id="ta1_85" class="block iDevice_content">
+<p>Az adatbázis logikai modelljének elkészítéséhez az alábbi szempontokat kell figyelebe venni:</p>
+<ul>
+<li>Miről szeretnénk eltárolni adatokat?</li>
+<li>Milyen adatokat szeretnénk tárolni?</li>
+<li>Hogyan viszonyulnak egymáshoz a tárolandó az adatok?</li>
+</ul>
+<p style="text-align: justify;">A fenti kérdésekre adjuk meg a választ 
+az egyed-kapcsolat diagram jelölésrendszere segítségével. Az alábbiakban
+ áttekintjük ezeket a jelöléseket.</p>
+<p style="text-align: justify;"><strong>Egyed</strong> (entitás): valódi
+ vagy fiktív dolog, amely tulajdonságokkal, jellemzőkkel bír és önálló 
+elemként tartjuk számon (pl. autó, személy, könyv, stb.) Az egyedeket 
+téglalappal jelöljük és beleírjuk az egyed nevét.<br><img src="Az%20egyed-kapcsolat%20diagram%20elemei%20%20%20Adatb%C3%A1zisok%20gyakorlat_elemei/szemely_pelda.png" width="200" height="130"></p>
+<p style="text-align: justify;"><strong>Kapcsolat</strong>: két vagy több egyed között határoz meg relációt (pl. könyvtári adatbázisban ha van egy <em>személy</em> egyed és egy <em>könyv</em> egyed, akkor a köztük lévő kapcsolat a <em>kölcsönzés</em>). Rekurzív kapcsolat esetén az egyed önmagával van relációban (pl. ha van egy <em>személy</em> egyedünk, akkor az <em>anyja</em> vagy <em>apja</em> kapcsolat rekurzív kapcsolat lesz, hiszen mindenkinek az apja vagy anyja szintén <em>személy</em>).
+ A kapcsolatokat rombusszal jelöljük, és beleírjuk a kapcsolat nevét. A 
+példában az egyik helyen nyíllal jelöltük a kapcsolatot, ennek külön 
+jelentése van, amelyet később tárgyalunk. <br><img src="Az%20egyed-kapcsolat%20diagram%20elemei%20%20%20Adatb%C3%A1zisok%20gyakorlat_elemei/konyvtar_NM_pelda.png" width="354" height="327"><img style="margin-left: 100px; margin-right: 100px;" src="Az%20egyed-kapcsolat%20diagram%20elemei%20%20%20Adatb%C3%A1zisok%20gyakorlat_elemei/szemely_rekurziv_pelda.png" width="315" height="197"></p>
+<p style="text-align: justify;"><strong>Attribútum</strong>: egyedek és kapcsolatok tulajdonságát jelöli (pl. egy <em>személy</em> egyed esetében tulajdonság lehet a <em>név</em>, <em>lakcím</em>, <em>születési dátum</em>, <em>adóazonosító</em>).
+ Minden egyed kell, hogy rendelkezzen legalább egy attribútummal. 
+Kapcsolatok is rendelkezhetnek attribútummal (pl. könyvtári adatbázisban
+ a <em>kölcsönzés</em> kapcsolat rendelkezhet egy <em>mikor</em> 
+attribútummal, amely a kölcsönzés dátumát jelöli). Az attribútumokat 
+ellipszissel jelöljük és beleírjuk a nevét. Azt a legszűkebb 
+attribútumhalmazt, amely egyértelműen azonosítja az egyedet <strong><em>kulcsnak</em></strong> nevezzük. A kulcsban szereplő attribútumok nevét aláhúzással jelöljük. (Lásd a fenti példákat.)</p>
+<p style="text-align: justify;"><strong>Gyenge egyed</strong>: olyan 
+egyed, amelynek attribútumhalmazából nem tudunk kijelölni kulcsot (pl. 
+egy színházi előadást a szerzője és a címe nem határoz meg egyértelműen,
+ mert az adott színdarabot többször is előadhatják). Duplavonalas 
+téglalappal jelöljük.</p>
+<p style="text-align: justify;"><strong>Meghatározó kapcsolat</strong>: gyenge entitást meghatározó kapcsolat (pl. ha a <em>színházi előadás</em> gyenge egyed, akkor meghatározó kapcsolattal hozzákapcsolhatjuk egy színházhoz és ez a kapcsolat rendelkezik egy <em>mikor</em> attribútummal, amely a kezdési időpontot mutatja). A meghatározó kapcsolat jele a duplavonalas rombusz.<br><img src="Az%20egyed-kapcsolat%20diagram%20elemei%20%20%20Adatb%C3%A1zisok%20gyakorlat_elemei/szinhazi_eloadas.png" width="395" height="302"></p>
+<p style="text-align: justify;"><strong>Összetett attribútum</strong>: olyan attribútum, amely maga is rendelkezik részattribútumokkal (pl. a <em>lakcím</em> attribútum lehet összetett attribútum, ha rendelkezik <em>irányítószám</em>, <em>utca</em> és <em>házszám</em>
+ attribútummal). Az összetett attribútumot és a részattribútumokat is 
+ellipszissel jelöljük. A részattribútumokat az összetett attribútumhoz 
+kötjük.<br><img src="Az%20egyed-kapcsolat%20diagram%20elemei%20%20%20Adatb%C3%A1zisok%20gyakorlat_elemei/szemely_lakcim_pelda.png" width="364" height="228"></p>
+<p style="text-align: justify;"><strong>Többértékű attribútum</strong>: olyan attribútum, amely egyidejűleg több értékkel rendelkezik (pl. egy könyvnek több szerzője is lehet, ekkor a <em>könyv</em> egyedhez kapcsolunk egy <em>szerző</em> attribútumot, amely többértékű). A többértékű attribútumokat duplavonalas ellipszissel jelöljük.<br><img src="Az%20egyed-kapcsolat%20diagram%20elemei%20%20%20Adatb%C3%A1zisok%20gyakorlat_elemei/konyv_pelda.png" width="300" height="121"></p>
+<p style="text-align: justify;"><strong>Specializáló kapcsolat</strong>:
+ olyan kapcsolat, amely hierarchiát jelöl az egyedek között. Például egy
+ épületben minden helyiség rendelkezik ajtószámmal, alapterülettel, így a
+ <em>helyiség</em> egyedet ellátjuk az <em>ajtószám</em> és az <em>alapterület</em> attribútumokkal. A <em>számítógépes tanterem</em>, olyan <em>helyiség</em>, amely az <em>ajtószámon</em> és az <em>alapterületen</em> túl rendelkezik még a <em>férőhelyek számával</em>.
+ A specializáló kapcsolatot háromszöggel jelöjük, amelynek felső csúcsa a
+ főtípus (pl. helyiség) felé mutat. Mivel a specializáló kapcsolat 
+leszármaztatást jelöl, ezért a származtatott egyedek öröklik, a főegyed 
+(vagy főtípus) tulajdonságait. A példában a <em>számítógépes terem</em> és a <em>mosdó</em> is rendelkezik az <em>alapterület</em> és <em>ajtószám</em> attribútumokkal, de ezt itt már nem jelöljük.<br><img src="Az%20egyed-kapcsolat%20diagram%20elemei%20%20%20Adatb%C3%A1zisok%20gyakorlat_elemei/helyiseg_specializalo_kapcsolat.png" width="415" height="302"></p>
+<p style="text-align: justify;"></p>
+<p></p>
+</div>
+</div>
+</article>
+<p align="center">Licensed under the <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution Non-commercial Share Alike License 4.0</a></p></section>
+</div>
+<div id="bottomPagination">
+<nav class="pagination noprt">
+<a href="https://www.inf.u-szeged.hu/~gnemeth/adatbgyak/exe/EK_diagram/index.html" class="prev"><span>« </span>Előző</a> | <a href="https://www.inf.u-szeged.hu/~gnemeth/adatbgyak/exe/EK_diagram/kapcsolatok_tpusai.html" class="next"> Következő<span> »</span></a>
+</nav>
+</div>
+</div>
+<script type="text/javascript" src="Az%20egyed-kapcsolat%20diagram%20elemei%20%20%20Adatb%C3%A1zisok%20gyakorlat_elemei/my_js.js"></script></body></html>

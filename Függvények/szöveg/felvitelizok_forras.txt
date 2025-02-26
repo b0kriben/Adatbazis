@@ -1,0 +1,186 @@
+
+CREATE TABLE `iskolak` (
+  `azonosito` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
+  `iskolanev` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
+  `iskolaisz` varchar(4) COLLATE utf8_hungarian_ci NOT NULL,
+  `iskolahely` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
+  `iskolautca` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
+  `iskolaszam` varchar(10) COLLATE utf8_hungarian_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+
+INSERT INTO `iskolak` (`azonosito`, `iskolanev`, `iskolaisz`, `iskolahely`, `iskolautca`, `iskolaszam`) VALUES
+('027915', 'Általános Iskola', '6422', 'Tompa', 'Bem utca', '22-24.'),
+('029643', 'Tarjánváros III. Számú Általános Iskola', '6723', 'Szeged', 'Építő utca', '9.'),
+('029644', 'Orczy István Általános Iskola', '6791', 'Szeged', 'Szent János tér', '2-4.'),
+('029645', 'Gárdonyi Géza Általános Iskola', '6710', 'Szeged', 'Gárdonyi utca', '6.'),
+('029647', 'Felsővárosi Általános Iskola', '6723', 'Szeged', 'Gyík utca', '3.'),
+('029648', 'Odessza II. Számú Általános Iskola', '6726', 'Szeged', 'Herke utca', '5.'),
+('029651', 'Gedói Általános Iskola', '6723', 'Szeged', 'József A. sgt.', '116.'),
+('029652', 'Algyői Általános Iskola', '6750', 'Algyő', 'Kastélykert utca', '59.'),
+('029661', 'Weöres Sándor Általános Iskola', '6723', 'Szeged', 'Űrhajós utca', '4.'),
+('029670', 'Rókusvárosi II. Számú Általános Iskola', '6724', 'Szeged', 'Csáky József utca', '2.'),
+('029671', 'Makkosházi Általános Iskola', '6723', 'Szeged', 'Ortutay utca', '3.'),
+('029681', 'SZTE JGYTF-i Kar Gyakorló Általános Iskolája', '6725', 'Szeged', 'Boldogasszony sgt.', '8.'),
+('029696', 'ÁMK Általános Iskolája', '6911', 'Királyhegyes', 'Jókai', '29.'),
+('029697', 'Dózsa György Általános Iskola', '6775', 'Kiszombor', 'Óbébai utca', '6.'),
+('029713', 'Általános Iskola', '6762', 'Sándorfalva', 'Alkotmány krt.', '15-17.'),
+('029714', 'Általános Iskola', '6763', 'Szatymaz', 'Petőfi utca', '6.'),
+('040365', 'Karolina Ált. Isk.', '6725', 'Szeged', 'Szentháromság', '70-76.');
+
+
+
+CREATE TABLE `tanulok` (
+  `tanulokod` int(11) NOT NULL,
+  `tanulonev` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
+  `kulfoldi` varchar(4) COLLATE utf8_hungarian_ci NOT NULL,
+  `osztalykod` varchar(10) COLLATE utf8_hungarian_ci NOT NULL,
+  `szuldatum` date NOT NULL,
+  `nem` varchar(10) COLLATE utf8_hungarian_ci NOT NULL,
+  `testverszam` tinyint(4) NOT NULL,
+  `lakcim` varchar(200) COLLATE utf8_hungarian_ci NOT NULL,
+  `iskolakod` varchar(10) COLLATE utf8_hungarian_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+
+INSERT INTO `tanulok` (`tanulokod`, `tanulonev`, `kulfoldi`, `osztalykod`, `szuldatum`, `nem`, `testverszam`, `lakcim`, `iskolakod`) VALUES
+(1, 'Pokol Sára', 'Nem', '1/D', '1981-01-20', 'HAMIS', 1, 'Egerhegy, Gyimes u. 83.', '027915'),
+(2, 'Szegfű Olivér', 'Nem', '2/A', '1980-03-08', 'IGAZ', 2, 'Tiveletelek, Bérc u. 96.', '029714'),
+(3, 'Balogi Jolán', 'Igen', '1/D', '1981-01-15', 'HAMIS', 1, 'Alsópest, Erdőss u. 18.', '027915'),
+(4, 'Mári Menyhért', 'Nem', '1/C', '1981-05-04', 'IGAZ', 2, 'Alsópest, Aszú u. 33.', '029714'),
+(5, 'Pór Ida', 'Nem', '1/C', '1980-07-31', 'HAMIS', 2, 'Radonvár, Agyag u. 71.', '029714'),
+(6, 'Gyenes Boglárka', 'Nem', '2/B', '1980-08-06', 'HAMIS', 2, 'Nyúlváros, Csokor u. 4.', '029714'),
+(7, 'Fodor Vince', 'Nem', '1/B', '1980-10-04', 'IGAZ', 3, 'Alsópest, Domb u. 95.', '029696'),
+(8, 'Paszt Mária', 'Igen', '4/D', '1978-04-27', 'HAMIS', 3, 'Gazdaghely, Főnök u. 55.', '029696'),
+(9, 'Ádok Valentin', 'Nem', '1/B', '1981-05-11', 'IGAZ', 3, 'Végvár, Fenyő u. 24.', '029696'),
+(10, 'Gesztesi Gergely', 'Nem', '4/E', '1978-08-09', 'IGAZ', 2, 'Csókostő, Cselló u. 25.', '029714'),
+(11, 'Csanád Tamás', 'Nem', '1/C', '1980-12-13', 'IGAZ', 2, 'Csónakkút, Felvidék u. 64.', '029670'),
+(12, 'Gyarló Franciska', 'Nem', '1/D', '1980-11-28', 'HAMIS', 2, 'Végvár, Avar u. 89.', '029696'),
+(13, 'Horcsik Ábel', 'Nem', '4/A', '1978-04-20', 'IGAZ', 3, 'Ostromos, Áldás u. 25.', '029670'),
+(14, 'Minarik Orsolya', 'Nem', '4/D', '1978-06-11', 'HAMIS', 2, 'Angóravölgy, Katica u. 56.', '029651'),
+(15, 'Tallósy Adrienn', 'Nem', '1/D', '1981-01-15', 'HAMIS', 2, 'Nyúlváros, Jupiter u. 54.', '029697'),
+(16, 'Dévényi Réka', 'Nem', '1/B', '1981-08-08', 'HAMIS', 1, 'Radonvár, Búza u. 45.', '029696'),
+(17, 'Zakar Enikő', 'Nem', '1/E', '1981-04-01', 'HAMIS', 3, 'Alsópest, Csángó u. 101.', '029670'),
+(18, 'Szukits Adrián', 'Nem', '1/A', '1980-09-26', 'IGAZ', 0, 'Ostromos, Csend u. 72.', '029670'),
+(19, 'Knébel Ákos', 'Nem', '3/D', '1979-05-20', 'IGAZ', 3, 'Szegényfő, Bajor u. 95.', '029651'),
+(20, 'Szakál Szilvia', 'Nem', '1/E', '1981-02-17', 'HAMIS', 2, 'Radonvár, Gyimes u. 84.', '027915'),
+(21, 'Császár Virgil', 'Nem', '1/C', '1980-08-30', 'HAMIS', 1, 'Alsópest, Határ u. 21.', '029670'),
+(22, 'Kőris Péter', 'Nem', '4/D', '1977-10-08', 'IGAZ', 0, 'Csókostő, Kavics u. 103.', '029645'),
+(23, 'Pecze Irén', 'Nem', '2/A', '1980-04-18', 'HAMIS', 1, 'Nyúlváros, Kör u. 21.', '029643'),
+(24, 'Badár Tivadar', 'Nem', '3/A', '1979-05-18', 'IGAZ', 2, 'Alsópest, Csatár u. 93.', '029670'),
+(25, 'Prókai Mária', 'Nem', '3/B', '1979-06-02', 'HAMIS', 0, 'Gazdaghely, Hír u. 34.', '029644'),
+(26, 'Bőrös Béla', 'Igen', '3/E', '1979-08-22', 'IGAZ', 3, 'Ostromos, Bicska u. 19.', '029697'),
+(27, 'Satyinszlai Amália', 'Nem', '4/D', '1977-11-02', 'HAMIS', 3, 'Tiveletelek, Citrus u. 61.', '027915'),
+(28, 'Nyilasi Bátor', 'Nem', '2/C', '1980-05-08', 'IGAZ', 2, 'Csókostő, Fő u. 30.', '029645'),
+(29, 'Hanusz Malvin', 'Nem', '3/C', '1979-07-25', 'HAMIS', 2, 'Végvár, Húr u. 15.', '029681'),
+(30, 'Brácsás Berta', 'Nem', '3/A', '1978-08-24', 'HAMIS', 3, 'Csókostő, Csordás u. 30.', '029644'),
+(31, 'Gyurkovics Mária', 'Nem', '4/B', '1977-09-08', 'HAMIS', 0, 'Ostromos, Bácskai u. 79.', '029681'),
+(32, 'Mahler Jeromos', 'Nem', '2/B', '1980-03-10', 'IGAZ', 3, 'Ostromos, Arnold u. 53.', '029647'),
+(33, 'Gyémánt Nárcisz', 'Nem', '4/D', '1978-04-01', 'HAMIS', 0, 'Gazdaghely, Akna u. 51.', '029643'),
+(34, 'Duba Roxána', 'Nem', '3/A', '1979-04-08', 'HAMIS', 2, 'Szegényfő, Állomás u. 58.', '029643'),
+(35, 'Balogh Judit', 'Nem', '2/C', '1979-10-03', 'HAMIS', 0, 'Angóravölgy, Furulya u. 24.', '029696'),
+(36, 'Szukits Albert', 'Nem', '3/A', '1979-03-26', 'IGAZ', 3, 'Végvár, Gőz u. 87.', '029696'),
+(37, 'Tömösi Lilla', 'Nem', '3/D', '1979-01-22', 'HAMIS', 3, 'Gazdaghely, Aknász u. 101.', '029681'),
+(38, 'Hűber Marianna', 'Nem', '4/A', '1978-04-26', 'HAMIS', 3, 'Csókostő, Harcsa u. 2.', '027915'),
+(39, 'Reheczky Patrícia', 'Nem', '4/E', '1978-03-25', 'HAMIS', 0, 'Ostromos, Delfin u. 21.', '029644'),
+(40, 'Tagai Franciska', 'Nem', '1/E', '1980-09-07', 'HAMIS', 0, 'Radonvár, Gébics u. 11.', '029647'),
+(41, 'Galgóczy Zelma', 'Nem', '4/B', '1978-03-30', 'HAMIS', 2, 'Nyúlváros, Béla u. 21.', '029696'),
+(42, 'Papdi Kata', 'Nem', '2/D', '1979-10-23', 'HAMIS', 2, 'Nyúlváros, Barlang u. 49.', '029643'),
+(43, 'Homonnai Marcell', 'Nem', '2/A', '1979-10-04', 'IGAZ', 2, 'Tiveletelek, Berek u. 16.', '029648'),
+(44, 'Daru Géza', 'Nem', '4/A', '1978-04-14', 'IGAZ', 1, 'Nyúlváros, Igló u. 58.', '029696'),
+(45, 'Czeglédi Sára', 'Nem', '1/D', '1981-04-08', 'HAMIS', 3, 'Angóravölgy, Kék u. 51.', '029648'),
+(46, 'Mandász Kitti', 'Nem', '4/E', '1977-11-19', 'HAMIS', 3, 'Tiveletelek, Alom u. 52.', '029696'),
+(47, 'Pálvölgyi Ármin', 'Nem', '2/E', '1980-04-29', 'IGAZ', 1, 'Gazdaghely, Igló u. 45.', '029643'),
+(48, 'Gyovai Csenge', 'Nem', '2/D', '1980-05-31', 'IGAZ', 1, 'Szegényfő, Kőszeg u. 37.', '029645'),
+(49, 'László Berta', 'Nem', '3/E', '1979-01-13', 'HAMIS', 2, 'Szegényfő, Kincs u. 78.', '029697'),
+(50, 'Mingesz Gergely', 'Nem', '1/C', '1980-12-05', 'IGAZ', 0, 'Csónakkút, Bendő u. 22.', '029648');
+
+
+
+
+
+
+
+CREATE DATABASE felvetelizok utf8       utf8_hungarian_ci;
+
+ALTER TABLE tanulok ADD FOREIGN KEY (tanulokod);
+ALTER TABLE iskolak ADD FOREIGN KEY (azonosito);
+
+ALTER TABLE tanulok ADD FOREIGN KEY (iskolakod) REFERENCES iskolak(azonosito);
+
+
+1.	Készítsen listát a 15 leghosszabb nevű tanuló nevéről!
+SELECT tanulonev
+FROM tanulok
+ORDER BY LENGTH(tanulonev) DESC LIMIT 15;
+
+
+2.	istázza ki a tanulókat és azt, hogy melyik városban laknak!
+SELECT tanulonev, SUBSTRING_INDEX(lakcim, ",", 1) AS telepules
+FROM tanulok;
+
+
+3.	Készítsen olyan listát, amelyben a tanulók neve mellett a lakhelyük városneve és a lakcím többi része (utca, házszám) két külön oszlopban jelenik meg!
+SELECT tanulonev, SUBSTRING(lakcim, 1, LOCATE(",", lakcim)-1) AS telepules,
+SUBSTRING(lakcim, LOCATE(",", lakcim)+2) AS cim
+FROM tanulok;
+
+4.	Vannak-e olyan tanulónevek, amelyeknek az első 3 karaktere „MIN”, de mégsem ugyanaz a teljes név? Listázza ezeket a tanulóneveket!
+SELECT tanulonev
+FROM tanulok
+WHERE tanulonev LIKE "MIN%" AND tanulonev NOT LIKE "MIN %";
+-- vagy
+SELECT tanulonev
+FROM tanulok
+WHERE STRCMP(SUBSTRING(tanulonev, 1, 3), "MIN") = 0 AND STRCMP(SUBSTRING(tanulonev, 1, 4), "MIN") != 0;
+
+
+5.	Készítsen olyan listát a tanulókról, amelyben megjelenik a tanulók neve csupa nagybetűvel és ezzel egy cellában szóközzel elválasztva az oszálykód, illetve a születési dátum!
+SELECT CONCAT_WS("", Upper(tanulonev), osztalykod, szuldatum) AS tanuloadatok
+FROM tanulok;
+
+
+6.	Listázza a tanulók nevét és nemét úgy, hogy a lányoknál a „LÁNY” szó jelenjen meg csupa nagybetűvel, a fiúknál a „FIÚ” szó jelenjen meg csupa kisbetűvel!
+SELECT tanulonev, IF(nem = "igaz", LOWER("fió"), UPPER("lány")) AS nem
+FROM tanulok;
+
+
+7.	Készítsen olyan listát, amely a tanulók nevét a szóköz mentén szétvágja vezetéknévre és keresztnévre! A mezőknek adja a vezeteknev illetve keresztnev aliasnevet!
+Készítsen ebből a listából egy új táblát nevek néven!
+SELECT SUBSTRING(tanulonev, 1, LOCATE(" ", tanulonev) - 1) AS vezeteknev,
+SUBSTRING(tanulonev, LOCATE(" ", tanulonev) + 1) AS keresztnev
+FROM tanulok;
+
+-- új tábla
+CREATE TABLE nevek(
+	vezeteknev varchar(30),
+	keresztnev varchar(30)
+);
+
+-- a lekérdezés eredményémek beszúrása a táblába
+INSERT INTO nevek
+SELECT SUBSTRING(tanulonev, 1, LOCATE(" ", tanulonev) - 1) AS vezeteknev,
+SUBSTRING(tanulonev, LOCATE(" ", tanulonev) + 1) AS keresztnev
+FROM tanulok;
+
+
+8.	Listázza az iskolák összes adatát úgy, hogy a címet összefűzi egy stringbe! Az összefűzésnél a szóköz legyen az elválasztókarakter, kivéve hogy a városnév után vessző és szóköz legyen!
+SELECT CONCAT(azonosito, " ", iskolanev, " ", iskolaisz, " ", iskolahely, ",", iskolautca, " ", iskolaszam) AS osszesAdat
+FROM iskolak;
+-- vagy
+SELECT CONCAT_WS(" ", azonosito, iskolanev, iskolaisz, CONCAT(iskolahely, ","), iskolautca, iskolaszam) AS osszesAdat
+FROM iskolak;
+
+
+9.	Írja ki a nem szegedi iskolák közül a három leghosszabb nevű iskola nevét, települését és nevének karakterszámát!
+SELECT iskolanev, iskolahely, LENGTH(iskolanev) AS iskNevKarSzam
+FROM iskolak
+WHERE iskolahely != "Szeged"
+ORDER BY iskNevKarSzam DESC LIMIT 3;
+
+
+10.	Tételezzük fel, hogy a szegedi iskolák közül a 6721-es irányítószámot elgépelték 6723-ra. Jelenítse meg ezen iskolák nevét, és a helytelen illetve a helyes irányítószámot úgy, hogy kicseréli az utolsó számjegyet!
+SELECT iskolanev, iskolaisz AS helytelen, INSERT(iskolaisz, 4, 1, "1") AS helyesIrsz
+FROM iskolak
+WHERE iskolaisz = "6723";
+
