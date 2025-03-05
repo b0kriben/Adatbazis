@@ -1,0 +1,121 @@
+-- 1.
+SELECT 
+    nev,
+    szulido,
+    TIMESTAMPDIFF(YEAR, szulido, CURDATE()) AS eletkor,
+    TIMESTAMPDIFF(YEAR, szulido, CURDATE()) + 1 AS aktualis_eletv
+FROM dolgozo;
+
+
+-- 2.
+SELECT 
+    nev, 
+    szulido
+FROM dolgozo
+WHERE MONTH(szulido) IN (9, 10, 11)
+ORDER BY szulido;
+
+
+-- 3.
+SELECT 
+    ROUND(AVG(TIMESTAMPDIFF(YEAR, szulido, CURDATE())), 3) AS atlageletkor
+FROM dolgozo;
+
+
+-- 4.
+SELECT 
+    SUBSTRING_INDEX(nev, ' ', 1) AS vezeteknev,
+    SUBSTRING_INDEX(nev, ' ', -1) AS keresztnev
+FROM dolgozo
+WHERE LENGTH(nev) - LENGTH(REPLACE(nev, ' ', '')) >= 1;
+
+
+-- 5.
+SELECT 
+    munka.nap, 
+    munka.feladat_kezd, 
+    munka.feladat_bef, 
+    munka.feladat,
+    TIMESTAMPDIFF(MINUTE, munka.feladat_kezd, munka.feladat_bef) DIV 60 AS orak,
+    TIMESTAMPDIFF(MINUTE, munka.feladat_kezd, munka.feladat_bef) MOD 60 AS percek
+FROM munka
+JOIN dolgozo ON dolgozo.dolgID = munka.dolgID
+WHERE dolgozo.nev = 'Zalai Béla';
+
+
+-- 6.
+SELECT 
+    ROUND(SUM(TIMESTAMPDIFF(MINUTE, feladat_kezd, feladat_bef)) / 60, 2) AS osszora
+FROM munka
+WHERE feladat = 'CAD-tervezés';
+
+
+-- 7.
+SELECT 
+    dolgozo.nev, 
+    munka.nap, 
+    munka.feladat_kezd, 
+    munka.feladat_bef, 
+    munka.feladat
+FROM dolgozo
+JOIN munka ON dolgozo.dolgID = munka.dolgID
+WHERE TIME(munka.feladat_kezd) BETWEEN '08:00:00' AND '09:00:00';
+
+
+-- 8.
+SELECT 
+    dolgozo.nev, 
+    munka.nap, 
+    munka.feladat
+FROM dolgozo
+JOIN munka ON dolgozo.dolgID = munka.dolgID
+WHERE munka.nap BETWEEN '2020-09-10' AND '2020-12-15' 
+AND DAY(munka.nap) = 11;
+
+
+-- 9.
+SELECT 
+    nev, 
+    FLOOR(1 + (RAND() * 10)) AS ertekeles
+FROM dolgozo;
+
+
+-- 10.
+SELECT nev
+FROM dolgozo
+WHERE SUBSTRING_INDEX(nev, ' ', 1) = 'János' 
+AND SUBSTRING_INDEX(nev, ' ', -1) != 'János';
+
+
+-- 11.
+ALTER TABLE haromszog ADD COLUMN c DOUBLE;
+
+UPDATE haromszog
+SET c = ROUND(SQRT(POW(a, 2) + POW(b, 2)), 2);
+
+
+-- 12.
+ALTER TABLE haromszog ADD COLUMN alfa DOUBLE, ADD COLUMN beta DOUBLE;
+
+UPDATE haromszog
+SET 
+    alfa = ROUND(ATAN(b / a) * (180 / PI()), 2),
+    beta = ROUND(ATAN(a / b) * (180 / PI()), 2);
+
+
+-- 13.
+SELECT 
+    a + b + c AS kerulet,
+    0.5 * a * b AS terulet
+FROM haromszog;
+
+
+-- 14.
+SELECT 
+    a, 
+    b, 
+    c
+FROM haromszog
+WHERE POW(a, 2) + POW(b, 2) = POW(c, 2);
+
+
